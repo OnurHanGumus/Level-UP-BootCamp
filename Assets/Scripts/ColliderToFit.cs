@@ -8,7 +8,7 @@ public class ColliderToFit : MonoBehaviour
     {
         FitToChildren();
     }
-    void FitToChildren()
+    public void FitToChildren()
     {
         Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
         GameObject rootGameObject = gameObject;
@@ -28,6 +28,7 @@ public class ColliderToFit : MonoBehaviour
         collider.center = bounds.center - rootGameObject.transform.position;
         collider.size = bounds.size;
 
-    } 
+    }
+   
 }
 

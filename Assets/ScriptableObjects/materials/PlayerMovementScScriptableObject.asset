@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcab1a003a2c6c4bb473d4c09e78a92, type: 3}
   m_Name: PlayerMovementScScriptableObject
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   baslangicKenarSinirDegeri: 0.35
