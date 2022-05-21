@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
         speed = scriptableObject.speed;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (bekle)
@@ -44,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.velocity = new Vector3(joystick.Horizontal, 0, speed);
-
         }
     }
 
