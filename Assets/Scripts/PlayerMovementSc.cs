@@ -15,6 +15,7 @@ public class PlayerMovementSc : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Debug message for commit.");
         rb = GetComponent<Rigidbody>();
         baslangicKenarSinirDegeri = scriptableObject.baslangicKenarSinirDegeri;
     }
