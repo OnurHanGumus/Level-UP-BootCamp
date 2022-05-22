@@ -4,13 +4,14 @@ using System.Collections;
 
 public class ColliderToFit : MonoBehaviour
 {
+    
     public void Start()
     {
         FitToChildren();
     }
     public void FitToChildren()
     {
-        Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+        Bounds bounds = new Bounds(transform.parent.position, Vector3.zero);
         GameObject rootGameObject = gameObject;
 
         for (int i = 0; i < rootGameObject.transform.childCount; ++i)

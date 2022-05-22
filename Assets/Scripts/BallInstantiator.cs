@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BallInstantiator : MonoBehaviour
 {
-    [SerializeField] int maksimumTopOlusturmaMesafesi = 10, topSayisiXekseni = 2, topSayisiYekseni = 10, sonTopKonulanNoktaZ = 0;
+    [SerializeField] int maksimumTopOlusturmaMesafesi = 10, topSayisiXekseni = 2, topSayisiYekseni = 10, sonTopKonulanNoktaZ = 0, hiz = 5, etkinMesafe = 15;
     [SerializeField] GameObject collectablePrefab = null;
     [SerializeField] float toplarinBirbiriyleMesafesi = 0.1f; 
 
     Rigidbody rb;
+    float ilkOlustuguNokta;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        ilkOlustuguNokta = transform.position.z;
     }
    
 
@@ -28,8 +30,14 @@ public class BallInstantiator : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(0, 0, 5);
+        if (transform.position.z - ilkOlustuguNokta <= etkinMesafe)
+            rb.velocity = new Vector3(0, 0, hiz);
+        else
+        {
+            Debug.Log("bitti");
 
+            Destroy(gameObject);
+        }
     }
 
     void ToplariYerlestir()

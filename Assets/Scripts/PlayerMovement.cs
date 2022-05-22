@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public FixedJoystick joystick;
     public PlayerMovementScScriptableObject scriptableObject;
 
+
     Rigidbody rb;
 
 
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         baslangicKenarSinirDegeri = scriptableObject.baslangicKenarSinirDegeri;
         speed = scriptableObject.speed;
+
+
     }
 
     void FixedUpdate()
@@ -52,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(KarakteriDuraklat());
         }
+        if (other.tag == "bitisCizgisi")
+        {
+            StartCoroutine(KarakteriDurdur());
+
+        }
     }
 
     IEnumerator KarakteriDuraklat()
@@ -59,5 +67,11 @@ public class PlayerMovement : MonoBehaviour
         bekle = true;
         yield return new WaitForSeconds(2);
         bekle = false;
+    }
+
+    IEnumerator KarakteriDurdur()
+    {
+        bekle = true;
+        yield return new WaitForSeconds(1);
     }
 }

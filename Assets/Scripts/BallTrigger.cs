@@ -9,15 +9,14 @@ public class BallTrigger : MonoBehaviour
     
     public int istenenTopSayisi = 5;
 
-    GameObject anaPlatform;
+
     Transform parent;
-    ColliderToFit colliderToFit;
     [SerializeField] PlatformCanvas platformCanvas;
     private void Awake()
     {
-        anaPlatform = GameObject.FindGameObjectWithTag("anaPlatform");
-        colliderToFit = anaPlatform.GetComponent<ColliderToFit>();
+
         parent = transform.parent;
+
     }
 
     private void Start()
@@ -32,10 +31,11 @@ public class BallTrigger : MonoBehaviour
             ++topSayisi;
             platformCanvas.GuncellenenTextiGoster(topSayisi, istenenTopSayisi);
 
-            if (topSayisi >= istenenTopSayisi)
+            if (topSayisi == istenenTopSayisi)
             {
                 IstenenTopSayisinaUlasildi();
             }
+            Destroy(other.gameObject, 1f);
         }
        
     }
@@ -43,9 +43,9 @@ public class BallTrigger : MonoBehaviour
 
     void IstenenTopSayisinaUlasildi()
     {
-        parent.position = new Vector3(transform.parent.position.x, 0, transform.parent.position.z);
-        parent.parent = anaPlatform.transform; //kýrýkplatformu da anaplatforma ekleyip anaplatformun colliderini tekrar konumlandýrýyor.
-        colliderToFit.FitToChildren();
+        parent.position = new Vector3(transform.parent.position.x, -0.01f, transform.parent.position.z);
+        GameManager.gameManager.SeviyeyiArttir();
+        
     }
 
     
