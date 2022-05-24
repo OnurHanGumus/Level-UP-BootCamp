@@ -10,7 +10,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     Transform player;
 
-    public int currentScene = 0;
+    public int currentScene = 0;//eklenen son sahnedir.
 
     LevelManager levelManager;
     int[] bolumunBelirlenmisSeviyeIdleri;
@@ -19,9 +19,12 @@ public class SceneLoader : MonoBehaviour
     {
         levelManager = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
 
+
     }
     private void Start()
     {
+        player = FindObjectOfType<PlayerMovement>().transform;
+
         bolumunBelirlenmisSeviyeIdleri = levelManager.MevcutBolumuDondur();
 
     }
@@ -32,25 +35,34 @@ public class SceneLoader : MonoBehaviour
         if (player.position.z >= 22.85f * currentScene - 11)
         {
             LoadLevel();
+            Debug.Log("yeni bölüm yüklendi.");
             currentScene++;
         } 
     }
 
     void LoadLevel()
     {
-        if (currentScene >= 3)
+        if (currentScene > 2)
         {
-            Debug.Log("You Won!");
-            levelManager.SonrakiBolumuOlustur();
+            return;
         }
-        else
-            scenesLoaded.Add(Instantiate(scenesCanBeLoad[bolumunBelirlenmisSeviyeIdleri[currentScene]], new Vector3(0, -0.01f * currentScene, 22.85f * currentScene), Quaternion.identity));
+        scenesLoaded.Add(Instantiate(scenesCanBeLoad[bolumunBelirlenmisSeviyeIdleri[currentScene]], new Vector3(0, -0.01f * currentScene, 22.85f * currentScene), Quaternion.identity));
     }
 
-  
+    public void OyunBittiSonrakiBolumuYukle()
+    {
+        foreach (var i in scenesLoaded)
+        {
+            Destroy(i);
+        }
+        scenesLoaded.Clear();
+
+        player.position = new Vector3(player.position.x, player.position.y, 0);
+        currentScene = 0;
+    }
 
 
 
-   
+
 
 }

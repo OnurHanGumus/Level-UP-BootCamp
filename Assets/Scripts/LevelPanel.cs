@@ -6,9 +6,16 @@ using UnityEngine.UI;
 public class LevelPanel : MonoBehaviour
 {
     [SerializeField] Text levelTxt = null;
+
+
+    private void Awake()
+    {
+        levelTxt = transform.GetChild(0).GetComponent<Text>();
+    }
     void Start()
     {
         levelTxt.text = 0.ToString();
+     
     }
 
     public void SeviyeyiGuncelle(int yeniSeviye)

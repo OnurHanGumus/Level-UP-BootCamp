@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float baslangicKenarSinirDegeri = 0.4f;
     int speed = 5;
-    bool bekle = false;
+    public bool bekle = false;
+    public static bool keybedildi = false;
     
 
     private void Awake()
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         baslangicKenarSinirDegeri = scriptableObject.baslangicKenarSinirDegeri;
         speed = scriptableObject.speed;
+        joystick = FindObjectOfType<FixedJoystick>();
 
 
     }
@@ -53,25 +55,43 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.tag == "gate")
         {
+            other.tag = "Untagged";
             StartCoroutine(KarakteriDuraklat());
+            Debug.Log("çalýþtý");
         }
         if (other.tag == "bitisCizgisi")
         {
-            StartCoroutine(KarakteriDurdur());
+            GameManager.gameManager.OyuncuBitisCizgisineUlasti();
+            KarakteriDurdur();
 
         }
     }
 
     IEnumerator KarakteriDuraklat()
     {
+        if (bekle)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+        }
+
         bekle = true;
         yield return new WaitForSeconds(2);
-        bekle = false;
+        if (GameManager.gameManager.topSayisinaUlasildi == true)
+        {
+            GameManager.gameManager.topSayisinaUlasildi = false;
+            bekle = false;
+
+        }
+
+
+       
+       
     }
 
-    IEnumerator KarakteriDurdur()
-    {
+    public void KarakteriDurdur()
+    {   
         bekle = true;
-        yield return new WaitForSeconds(1);
+       
     }
 }

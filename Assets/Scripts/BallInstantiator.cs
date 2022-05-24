@@ -34,7 +34,6 @@ public class BallInstantiator : MonoBehaviour
             rb.velocity = new Vector3(0, 0, hiz);
         else
         {
-            Debug.Log("bitti");
 
             Destroy(gameObject);
         }
@@ -52,7 +51,6 @@ public class BallInstantiator : MonoBehaviour
             for (int j = 0; j < topSayisiYekseni; j++)
             {
                 Instantiate(collectablePrefab, uzaklik, Quaternion.identity);
-                Debug.Log(uzaklik);
                 uzaklik = new Vector3(uzaklik.x, uzaklik.y, uzaklik.z + toplarinBirbiriyleMesafesi);
             }
             uzaklik = new Vector3(uzaklik.x + toplarinBirbiriyleMesafesi, transform.position.y, uzaklik.z - (toplarinBirbiriyleMesafesi * topSayisiYekseni));

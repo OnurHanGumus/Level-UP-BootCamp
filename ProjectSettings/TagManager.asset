@@ -10,6 +10,7 @@ TagManager:
   - anaPlatform
   - gate
   - platform
+  - bitisCizgisi
   layers:
   - Default
   - TransparentFX
