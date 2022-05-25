@@ -9,10 +9,13 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] Text mesajTxt;
     [SerializeField] Button eylemBtn, cikBtn;
+    [SerializeField] Transform fader;
 
     private void Start()
     {
         GameManager.gameManager.InitAgain();
+        FadeOut(fader);
+
     }
     public void FadeIn(Transform menu, float time = 0.5f)
     {
@@ -34,20 +37,36 @@ public class Menu : MonoBehaviour
         {
             mesajTxt.text = "Tebrikler:\nBölümü tamamladýnýz.";
             eylemBtn.transform.GetChild(0).GetComponent<Text>().text = "Sonraki Bölüm";
+            eylemBtn.onClick.AddListener(SonrakiBolumBtn);
+
         }
         else
         {
             mesajTxt.text = "Baþarýsýz:\nTekrar deneyiniz.";
             eylemBtn.transform.GetChild(0).GetComponent<Text>().text = "Tekrar Dene";
-
+            eylemBtn.onClick.AddListener(TekrarDeneBtn);
         }
-        
     }
 
-    public void EylemBtn()
+    public void SonrakiBolumBtn()
+    {
+        FadeOut(transform);
+        Invoke("SahneyiYukle", 1f);
+    }
+
+    public void TekrarDeneBtn()
+    {
+        FadeIn(fader);
+        FadeOut(transform);
+        Invoke("SahneyiYukle", 1f);
+    }
+
+
+
+    void SahneyiYukle()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //PlayerMovement.bekle = false;
+
     }
     public void CikisBtn()
     {

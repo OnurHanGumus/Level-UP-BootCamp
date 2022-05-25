@@ -6,7 +6,7 @@ public class BallTrigger : MonoBehaviour
 {
     public int topSayisi = 0;
 
-    
+    float platformSpeed = 1f;
     public int istenenTopSayisi = 5;
 
 
@@ -46,11 +46,13 @@ public class BallTrigger : MonoBehaviour
     }
 
 
+
+
     void IstenenTopSayisinaUlasildi()
     {
-        parent.position = Vector3.MoveTowards(parent.position, new Vector3(transform.parent.position.x, -0.01f, transform.parent.position.z),2f) ;
+        parent.position = Vector3.MoveTowards(parent.position, new Vector3(transform.parent.position.x, -0.015f, transform.parent.position.z), 1f) ;
         GameManager.gameManager.SeviyeyiArttir();
-        
+
     }
 
     void IstenenTopSayisinaUlasilamadi()
@@ -62,7 +64,6 @@ public class BallTrigger : MonoBehaviour
     IEnumerator TopSayisiniKontrolEt()
     {
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("top sayisi: " + topSayisi);
 
         if ((topSayisi >= istenenTopSayisi))
         {

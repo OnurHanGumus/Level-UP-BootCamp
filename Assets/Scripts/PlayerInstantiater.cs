@@ -8,6 +8,4 @@ public class PlayerInstantiater : MonoBehaviour
     {
         Instantiate(Resources.Load("importantObjects"), new Vector3(0, 0.11f, 0), Quaternion.identity);
     }
-
-  
 }

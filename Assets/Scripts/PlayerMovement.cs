@@ -61,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
         {
             other.tag = "Untagged";
             StartCoroutine(KarakteriDuraklat());
-            Debug.Log("çalýþtý");
         }
         if (other.tag == "bitisCizgisi")
         {
@@ -87,10 +86,6 @@ public class PlayerMovement : MonoBehaviour
             bekle = false;
 
         }
-
-
-       
-       
     }
 
     public void KarakteriDurdur()

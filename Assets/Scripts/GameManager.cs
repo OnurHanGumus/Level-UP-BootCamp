@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
         levelManager = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
         menu = FindObjectOfType<Menu>().GetComponent<Menu>();
 
-        
-
     }
 
     

@@ -26,6 +26,8 @@ public class SceneLoader : MonoBehaviour
         player = FindObjectOfType<PlayerMovement>().transform;
 
         bolumunBelirlenmisSeviyeIdleri = levelManager.MevcutBolumuDondur();
+        Debug.Log("Mevcut bölümün sahne sýralamasý: " + bolumunBelirlenmisSeviyeIdleri[0].ToString() + 
+            bolumunBelirlenmisSeviyeIdleri[1].ToString() + bolumunBelirlenmisSeviyeIdleri[2].ToString());
 
     }
 
@@ -35,7 +37,7 @@ public class SceneLoader : MonoBehaviour
         if (player.position.z >= 22.85f * currentScene - 11)
         {
             LoadLevel();
-            Debug.Log("yeni bölüm yüklendi.");
+            Debug.Log("yeni sahne eklendi.");
             currentScene++;
         } 
     }
