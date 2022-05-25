@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public FixedJoystick joystick;
     public PlayerMovementScScriptableObject scriptableObject;
+
+    CinemachineVirtualCamera virtualCamera;
 
 
     Rigidbody rb;
@@ -24,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
         speed = scriptableObject.speed;
         joystick = FindObjectOfType<FixedJoystick>();
 
-
+        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        virtualCamera.Follow = transform;
     }
 
     void FixedUpdate()

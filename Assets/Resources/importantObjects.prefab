@@ -736,9 +736,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c29e055d222be04faaf06406a1a08c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 7850117141785365426}
+  topSayisinaUlasildi: 0
   kazananOyuncuyaGosterilecekMesaj: Tebrikler!
   oyunKazanildi: 0
+  oyunKaybedildi: 0
   oyuncununEristigiSeviye: 0
 --- !u!1 &4090471365504704484
 GameObject:
@@ -1780,6 +1781,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4641794022770722274}
     m_Modifications:
+    - target: {fileID: 2077876045, guid: d0ae2bcd270014945917c569a73c515b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632542043986293266, guid: d0ae2bcd270014945917c569a73c515b, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632542043986293266, guid: d0ae2bcd270014945917c569a73c515b, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632542043986293266, guid: d0ae2bcd270014945917c569a73c515b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6632542043986293267, guid: d0ae2bcd270014945917c569a73c515b, type: 3}
       propertyPath: joystick
       value: 
@@ -1834,17 +1851,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0ae2bcd270014945917c569a73c515b, type: 3}
---- !u!114 &7850117141785365426 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6632542043986293267, guid: d0ae2bcd270014945917c569a73c515b, type: 3}
-  m_PrefabInstance: {fileID: 3529329159123188129}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ac62f1ae2b3d76419be6b505290f621, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7850117141785365429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6632542043986293268, guid: d0ae2bcd270014945917c569a73c515b, type: 3}
